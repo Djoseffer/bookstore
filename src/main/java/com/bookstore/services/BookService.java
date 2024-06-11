@@ -9,6 +9,7 @@ import com.bookstore.repositories.PublisherRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;
@@ -40,5 +41,10 @@ public class BookService {
         book.setReview(reviewModel);
 
         return bookRepository.save(book);
+    }
+
+    @Transactional
+    public void deleteBook(UUID id){
+        bookRepository.deleteById(id);
     }
 }
